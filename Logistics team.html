@@ -1,0 +1,266 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+<form action="/regisister_logistics_post" method="post" enctype="multipart/form-data" name="form1" id="form1">
+    {% csrf_token %}
+  <table width="516" border="1">
+  <tr>
+    
+      <th scope="row">Registration ID</th>
+      <td><label for="textfield9"></label>
+      <input type="text" name="textfield9" id="textfield9"  required/></td>
+    </tr>
+  
+    <tr>
+    
+      <th scope="row">Company Name</th>
+      <td><label for="textfield2"></label>
+      <input type="text" name="textfield2" id="textfield2" required /></td>
+    </tr>
+    <tr>
+    
+      <th scope="row">Post Address</th>
+      <td><label for="textfield10"></label>
+      <input type="text" name="textfield10" id="textfield10" required /></td>
+    <tr>
+      <th scope="row">Contact</th>
+      <td><label for="textfield6"></label>
+      <input type="number" name="textfield6" id="textfield6" required/></td>
+    </tr>
+    <tr>
+    </tr>
+    
+    <tr>
+      <th scope="row">Pincode</th>
+      <td><label for="textfield7"></label>
+      <input type="text" name="textfield7" id="textfield7" required /></td>
+    </tr>
+    
+    <tr>
+      <th scope="row">Website</th>
+      <td><label for="textfield3"></label>
+      <input type="text" name="textfield3" id="textfield3"  required/></td>
+    </tr>
+    <tr>
+      <th scope="row">Email</th>
+      <td><label for="textfield4"></label>
+      <input type="email" name="textfield4" id="textfield4" required /></td>
+    </tr>
+     <tr>
+
+      <th scope="row">Contact Pearson</th>
+      <td><label for="textfield5"></label>
+      <input type="text" name="textfield5" id="textfield5" required /></td>
+    </tr>
+    
+    <tr>
+      <th scope="row">Freight forwarder Licence</th>
+      <td><label for="fileField"></label>
+      <input type="file" name="fileField" id="fileField" required /></td>
+    </tr>
+    <tr>
+      <th height="113" scope="row">Transport Permits</th>
+      <td><p>
+        <label>
+<input type="checkbox" name="CheckboxGroup1" value="Road" id="CheckboxGroup1_0" />
+Road</label>
+        <br />
+        <label>
+          <input type="checkbox" name="CheckboxGroup1" value="Rail" id="CheckboxGroup1_1" />
+          Rail</label>
+        <br />
+        <label>
+          <input type="checkbox" name="CheckboxGroup1" value="Sea" id="CheckboxGroup1_2" />
+          Sea</label>
+        <br />
+        <label>
+          <input type="checkbox" name="CheckboxGroup1" value="Air" id="CheckboxGroup1_3" />
+          Air</label>
+        <br />
+        
+      </p></td>
+    </tr>
+    <tr>
+      <th scope="row"> Permits and Certifications</th>
+      <td><p>
+        <label>
+          <input type="checkbox" name="CheckboxGroup2" value="Customs Permit" id="CheckboxGroup2_0" />
+          Customs Permit
+        </label>
+        <br />
+        <label>
+          <input type="checkbox" name="CheckboxGroup2" value="Hasard material Transport Permit" id="CheckboxGroup2_1" />
+          Hasard material Transport Permit
+        </label>
+        <br />
+        <label>
+          <input type="checkbox" name="CheckboxGroup2" value="HACCP " id="CheckboxGroup2_2" />
+          HACCP 
+        </label>
+         Certification<br />
+        <label>
+          <input type="checkbox" name="CheckboxGroup2" value="GDP" id="CheckboxGroup2_3" />
+          GDP
+        </label>
+        Certification<br />
+      </p></td>
+    </tr>
+    <tr>
+      <th scope="row">Latitude</th>
+      <td><label for="textfield11"></label>
+      <input type="text" name="textfield11" id="textfield11" /></td>
+    </tr>
+    <tr>
+      <th scope="row">Longitude</th>
+      <td><label for="textfield"></label>
+      <input type="text" name="textfield" id="textfield" /></td>
+    </tr>
+         <tr>
+            <td><div id="gmap"></div></td>
+        </tr>
+    <tr>
+      
+      <th scope="row">Country</th>
+      <td><label for="textfield5"></label>
+      <input type="text" name="textfield9" id="textfield5" required /></td>
+    </tr>
+   
+    
+      <th scope="row">Password</th>
+      <td><label for="textfield8"></label>
+      <input type="password" name="textfield8" id="textfield8" pattern="{4,} " required/></td>
+    </tr>
+        <tr>
+      <th scope="row">Confirm Password</th>
+      <td><label for="textfield8"></label>
+      <input type="password" name="textfield8" id="textfield8" pattern="{4,}" required /></td>
+    </tr>
+     <tr>
+      <th colspan="2" scope="row">
+       <label for="textfield6"></label>
+       <button type="submit">submit</button></th>
+    </tr>
+  </table>
+</form>
+</body>
+</html>
+ <style type="text/css">
+html { height: 100% }
+body { height: 100%; margin: 0; padding: 0 }
+#map_canvas { height: 100% }
+</style>
+
+<script type="text/javascript"
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC6v5-2uaq_wusHDktM9ILcqIrlPtnZgEk&sensor=false">
+</script>
+<script type="text/javascript">
+
+    var map;
+        function initialize() {
+            var myLatlng = new google.maps.LatLng(11.618061975930,75.36565089010);
+            var myOptions = {
+                zoom:7,
+                center: myLatlng,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            }
+            map = new google.maps.Map(document.getElementById("gmap"), myOptions);
+            // marker refers to a global variable
+            marker = new google.maps.Marker({
+                position: myLatlng,
+                map: map
+            });
+
+            google.maps.event.addListener(map, "click", function(event) {
+                // get lat/lon of click
+                var clickLat = event.latLng.lat();
+                var clickLon = event.latLng.lng();
+
+                // show in input box
+                document.getElementById("textfield11").value = clickLat.toFixed(5);
+                document.getElementById("textfield").value = clickLon.toFixed(5);
+
+{#                  var marker = new google.maps.Marker({#}
+{#                        position: new google.maps.LatLng(clickLat,clickLon),#}
+{#                        map: map#}
+{#                     });#}
+            });
+    }
+
+    window.onload = function () { GetMylocation() };
+
+
+</script>
+     <style>
+ div#gmap {
+
+        width: 300%;
+        height: 300px;
+        border:double;
+ }
+    </style>
+
+{#    <form id="form1" runat="server">#}
+<center>
+<!-- MAP HOLDER -->
+
+<!-- REFERENCES -->
+{#Lat: <input type="text" id='lat'>#}
+{#Lon: <input type="text" id='lon'>#}
+
+</center>
+
+
+
+
+<script>
+
+function GetMylocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition);
+  } else {
+    //x.innerHTML = "Geolocation is not supported by this browser.";
+      alert("Geolocation is not supported by this browser.")
+  }
+}
+var x1 = document.getElementById("textfield11");
+var x2 = document.getElementById("textfield");
+var map;
+function showPosition(position) {
+  x1.value=position.coords.latitude;
+  x2.value=position.coords.longitude;
+
+  var myLatlng = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
+            var myOptions = {
+                zoom:14,
+                center: myLatlng,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            }
+            map = new google.maps.Map(document.getElementById("gmap"), myOptions);
+            // marker refers to a global variable
+            marker = new google.maps.Marker({
+                position: myLatlng,
+                map: map
+            });
+
+            google.maps.event.addListener(map, "click", function(event) {
+                // get lat/lon of click
+                var clickLat = event.latLng.lat();
+                var clickLon = event.latLng.lng();
+
+                // show in input box
+                document.getElementById("textfield11").value = clickLat.toFixed(5);
+                document.getElementById("textfield").value = clickLon.toFixed(5);
+
+{#                  var marker = new google.maps.Marker({#}
+{#                        position: new google.maps.LatLng(clickLat,clickLon),#}
+{#                        map: map#}
+{#                     });#}
+            });
+
+
+}</script>

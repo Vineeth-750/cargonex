@@ -1,0 +1,50 @@
+{% extends 'User/index.html' %}
+{% block body %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+<form id="form1" name="form1" method="post" action="">
+  <table class="table table-bordered table-dark">
+    <tr>
+      <th width="10" scope="row">#</th>
+      <td width="61">Product</td>
+      <td width="37">User</td>
+      <td width="66">Quantity</td>
+        <td width="66">Price</td>
+        <td width="81">Image</td>
+      <td width="81">&nbsp;</td>
+    </tr>
+      {% for i in data %}
+    <tr>
+      <th scope="row">&nbsp;{{ forloop.counter }}</th>
+      <td>{{i.PRODUCTS.productname}}</td>
+      <td>{{i.USER.Username}}</td>
+      <td>{{i.quantity}}</td>
+         <td>{{i.PRODUCTS.price}}</td>
+      <td>&nbsp;<img src="{{i.PRODUCTS.image }}" alt="img" width="100" height="100"/></td>
+      <td><a href="/delete_order/{{ i.id }}">Delete</a></td>
+    </tr>
+      {% endfor %}
+  </table>
+  <br />
+  <table width="200" border="1" class="table table-bordered table-dark">
+    <tr>
+      <th scope="row">Total Amount</th>
+      <td>{{ sum }}</td>
+    </tr>
+    <tr>
+        <td align="center" colspan="2" scope="row"><a href="/estimation">Add Location to Deliver</a> </td>
+    </tr>
+  </table>
+  <br />
+  
+  
+</form>
+</body>
+</html>
+{% endblock%}

@@ -1,0 +1,84 @@
+{% extends 'User/index.html' %}
+{% block pro %}
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{#<head>#}
+{#<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />#}
+{#<title>Untitled Document</title>#}
+{#</head>#}
+{##}
+{#<body>#}
+{#<form id="form1" name="form1" method="post" action="/">#}
+{##}
+{#   <table class="table table-bordered table-dark">#}
+{#    <tr>#}
+{#      <th scope="row">#</th>#}
+{#      <td>Product Name</td>#}
+{#      <td>Price</td>#}
+{#      <td>Image</td>#}
+{#      <td>Description</td>#}
+{#    </tr>#}
+{##}
+{#      {% for i in data %}#}
+{##}
+{#    <tr>#}
+{#      <th scope="row">{{ forloop.counter }}</th>#}
+{#      <td>&nbsp;{{i.productname}}</td>#}
+{#      <td>&nbsp;{{i.price }}</td>#}
+{#      <td><img src="{{i.image }}" alt="" height="100" width="100"/></td>#}
+{#      <td>&nbsp;{{i.description}}</td>#}
+{#      <td><a href="/product_update/{{ i.id }}">UPDATE</a> </td>#}
+{#    </tr>#}
+{#           {% for i in data %}#}
+{#                    <div class="col-md-4 d-flex align-items-stretch" style="height: 420px" >#}
+{#            <div class="box ">#}
+{#              <div class="img-box">#}
+{#                <img src="{{ i.image }}" alt="" width="100%">#}
+{#              </div>#}
+{#              <div class="detail-box">#}
+{#                <h5>#}
+{#                  {{i.productname}}#}
+{#                </h5>#}
+{#                  <h4>{{i.price }}</h4>#}
+{#                <p>#}
+{#                 {{i.description}}#}
+{#                </p><br><br><br><br><br><br><br>#}
+{#                <a href="/product_update/{{ i.id }}">UPDATE</a>#}
+{#              </div>#}
+{#            </div>#}
+{#          </div>#}
+
+
+
+<div class="container">
+  <div class="row">
+    {% for i in data %}
+      <div class="col-md-4">
+        <div class="card" style="width: 18rem;height: 26rem; margin: 10px; border-radius: 10px">
+<center>
+          <img src="{{ i.image }}" class="card-img-top" alt="..." style="height:150px;width:75%"></center>
+          <div class="card-body" style="margin-top: 10px;">
+            <h5 class="card-title" align="center">{{i.productname}}</h5>
+            <h5 class="card-title" align="center">price:{{i.price}}</h5>
+            <h5 class="card-title" align="center">Qty:{{i.quntity}}</h5>
+            <p class="card-text" style="max-height: 4em; overflow-y: auto;" align="center">{{i.description}}</p>
+            <div class="row">
+              <div class="col-6">
+                <a href="/delete_product/{{i.id }}" class="btn btn-danger" onclick="return confirm('Are you sure?')">Delete</a>
+              </div>
+              <div class="col-6">
+                <a href="/product_update/{{ i.id }}" class="btn btn-primary">UPDATE</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% if forloop.counter|divisibleby:3 and not forloop.last %}
+        </div><div class="row">
+      {% endif %}
+    {% endfor %}
+  </div>
+</div>
+
+
+{%endblock%}

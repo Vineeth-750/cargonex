@@ -1,0 +1,21 @@
+{% extends 'User/index.html' %}
+{% block body %}
+    <table class="table w-50 mx-auto">
+    {% if data|length == 0 %}
+    <tr>
+        <td><span><img src="/static/yello.png" width="32" height="32"></span> Wait for shipping...</td>
+    </tr>
+        {% else %}
+        <p style="font-size: 25px; text-align: center"><span><u>Track your Product</u></span></p>
+    {% for i in data %}
+    <tr>
+    {% if i.status == "delivered" %}
+        <td><span><img src="/static/green.png" width="32" height="32"></span> {{ i.status }} ,{{ i.location }} &emsp; {{ isDelivered }}</td>
+    {% else %}
+    <td><span><img src="/static/yello.png" width="32" height="32"></span> {{ i.status }} {{ i.location }} , {{ i.date }}: {{ i.time }}</td>
+    {% endif %}
+    </tr>
+    {% endfor %}
+    {% endif %}
+    </table>
+{% endblock %}

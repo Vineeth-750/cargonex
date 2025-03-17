@@ -1,0 +1,62 @@
+{% extends 'User/index.html' %}
+{% block body %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+<form id="form1" name="form1" method="post" action="">
+  <table class="table table-bordered table-dark">
+    <tr>
+      <th width="10" scope="row">#</th>
+{#      <td width="37">User</td>#}
+      <td width="61">Product</td>
+      <td width="61">Seller</td>
+      <td width="46">Date</td>
+      <td width="61">Amount</td>
+      <td width="73">Payment date</td>
+      <td width="104">Payment status</td>
+        <td width="104">Track</td>
+
+    </tr>
+      {% for i in data %}
+    <tr>
+      <th scope="row">{{ forloop.counter }}</th>
+      <td><a href="/view_products/{{ i.id }}">View Products</a></td>
+        <td>{{ i.RECUSER.Username }}</td>
+        <td>{{i.date}}</td>
+      <td>&nbsp;{{i.amount}}</td>
+      <td>&nbsp;{{i.payment_date}}</td>
+        <td>
+            {% if i.status == 'Approved' %}
+                {% if i.payment_status == "paid" %}
+                    {{ i.payment_status }}
+                {% else %}
+                    {% if i.can_pay %}
+                            <a href="/view_invoice/{{ i.id }}#oo">Pay Now</a>
+                    {% else %}
+                        Wait for Approval and assign
+                    {% endif %}
+                    {% endif %}
+            {% else %}
+                {{ i.payment_status}}
+            {% endif %}
+        </td>
+    <td>
+        {% if i.payment_status == "paid" %}
+        <a href="/track_product/{{ i.id }}">Track</a>
+        {% else %}
+        Not available now
+        {% endif %}
+    </td>
+    </tr>
+        {% endfor %}
+
+  </table>
+</form>
+</body>
+</html>
+{%endblock%}

@@ -1,0 +1,104 @@
+{% extends 'User/index.html' %}
+{% block body %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+ <style >
+        .btnn {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  display: inline-block;
+  padding: 9px 30px;
+  background-color: #0a97b0;
+  color: #ffffff;
+  border-radius: 0;
+  -webkit-transition: all .3s;
+  transition: all .3s;
+  border: none;
+  font-size: 15px;
+  text-transform: uppercase;
+  margin-left: 40%;
+}
+
+.btnn:hover{
+  background-color: #065968;
+}
+    </style>
+</head>
+
+<body>
+<form id="form1" name="form1" onsubmit="conpas()" method="post" action="/update_User_Post">
+    {% csrf_token %}
+  <table  class="table table-borderless table-warning w-50 mx-auto"style="border-radius: 20px;">
+    <tr>
+      <th width="197" scope="row">Name </th>
+      <td width="235"><label for="textfield"></label>
+      <input type="text" name="textfield" value="{{ data.Username }}" id="textfield" required/></td>
+    </tr>
+
+    <tr>
+      <th scope="row">Email</th>
+      <td><label for="textfield3"></label>
+      <input type="text" name="textfield3" value="{{ data.email }}" id="textfield3" required/></td>
+    </tr>
+    <tr>
+      <th scope="row">Contact Number</th>
+      <td><label for="textfield4"></label>
+      <input type="text" name="textfield4"value="{{ data.phone }}" id="textfield4" required/></td>
+    </tr>
+    <tr>
+      <th scope="row">Post Address</th>
+      <td><label for="textfield5"></label>
+      <input type="text" name="textfield5" value="{{ data.address }}" id="textfield5" required /></td>
+    </tr>
+    <tr>
+      <th scope="row">Pincode</th>
+      <td><label for="textfield6"></label>
+      <input type="text" name="textfield6" value="{{ data.pincode }}" id="textfield6" required/></td>
+    </tr>
+    <tr>
+      <th scope="row">Home Town</th>
+      <td><label for="textfield7"></label>
+      <input type="text" name="textfield7" value="{{ data.near_by_town }}" id="textfield7" required/></td>
+    </tr>
+    <tr>
+      <th scope="row">Country</th>
+      <td><label for="textfield8"></label>
+      <input type="text" name="textfield8" value="{{data.country }}" id="textfield8" required /></td>
+    </tr>
+    <tr>
+      <th scope="row">State</th>
+      <td><label for="textfield9"></label>
+      <input type="text" name="textfield9" value="{{data.state }}" id="textfield9" required/></td>
+    </tr>
+
+    <tr>
+      <th scope="row"><p>Import/Export</p>
+      <p>License        ID</p></th>
+      <td><label for="textfield10"></label>
+      <input type="text" name="textfield10" value="{{data.Expt_Impt_license_no }}" id="textfield10" required/></td>
+    </tr>
+    <tr>
+      <th scope="row"> Industrial Type</th>
+      <td><select name="jumpMenu" id="jumpMenu" >
+        <option {% if data.industry == 'Machinery and Equipment' %}selected{% endif %}>Machinery and Equipment</option>
+        <option {% if data.industry == 'Raw Materials and Components' %}selected{% endif %}>Raw Materials and Components</option>
+        <option {% if data.industry == 'Transportation Equipment' %}selected{% endif %}>Transportation Equipment</option>
+        <option {% if data.industry == 'Medical Equipments/Medicines' %}selected{% endif %}>Medical Equipments/Medicines</option>
+        <option {% if data.industry == 'Chemical Products' %}selected{% endif %}>Chemical Products</option>
+        <option {% if data.industry == 'Electrical/Electronics products' %}selected{% endif %}>Electrical/Electronics products</option>
+        <option {% if data.industry == 'Construction and Building Materials' %}selected{% endif %}>Construction and Building Materials</option>
+      </select></td>
+    </tr>
+
+      <th colspan="2">
+      <input type="submit" value="Update" class="btnn"/></th>
+    </tr>
+  </table>
+</form>
+</body>
+</html>
+{%endblock%}

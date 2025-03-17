@@ -1,0 +1,99 @@
+{% extends 'User/index.html' %}
+{% block pro %}
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{#<head>#}
+{#<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />#}
+{#<title>Untitled Document</title>#}
+{#</head>#}
+{##}
+{#<body>#}
+{##}
+{#<form action="//" method="post">#}
+{#    <table class="table table-bordered table-dark">#}
+{#    <tr>#}
+{##}
+{#      <th scope="row">#</th>#}
+{#      <td>User</td>#}
+{#      <td>Product Name</td>#}
+{#      <td>Price</td>#}
+{#      <td>Image</td>#}
+{#      <td>Description</td>#}
+{#      <td>quantity</td>#}
+{#    </tr>#}
+
+
+{#    <tr>#}
+{#      <th scope="row">{{forloop.counter }}</th>#}
+{#      <td>{{i.USER.Username }}</td>#}
+{#      <td>{{i.productname  }}</td>#}
+{#      <td>&nbsp;{{i.price}}</td>#}
+{#      <td><img src="{{i.image}}" alt="img" height="100" width="100"/> </td>#}
+{#      <td>{{i.description }}</td>#}
+{#      <td><form action="/request_product" method="post">{% csrf_token %}<input type="number" name="qty"><input type="hidden" name="id" value="{{ i.id }}"><button type="submit">Request</button> </form></td>#}
+{#    </tr>#}
+
+
+{#  <div class="container">#}
+{#  <div class="row">#}
+{#    {% for i in data %}#}
+{#      <div class="col-md-4">#}
+{#        <div class="card" style="width: 18rem; margin: 10px; border-radius: 10px">#}
+{#          <img src="{{ i.image }}" class="card-img-top" alt="..." style="height: 50%">#}
+{#          <div class="card-body">#}
+{#            <h5 class="card-title" align="center"><b>Seller:</b> {{i.USER.Username}}</h5>#}
+{#            <h5 class="card-title" align="center"><b>Product Name:</b> {{i.productname}}</h5>#}
+{#            <h5 class="card-title" align="center"><b>Price:</b> {{i.price}}</h5>#}
+{#            <h5 class="card-title" align="center"><b>Available:</b> {{i.quntity}}</h5>#}
+{#            <p class="card-text" align="center">{{i.description}}</p>#}
+{#            <form action="/request_product" method="post">#}
+{#              {% csrf_token %}#}
+{#              <input type="number" name="qty" class="form-control w-50 mx-auto" min="1" value="1" placeholder="quantity">#}
+{#              <input type="hidden" name="id" value="{{ i.id }}">#}
+{#              <button type="submit" class="btn btn-primary offset-4">Request</button>#}
+{#            </form>#}
+{#          </div>#}
+{#        </div>#}
+{#      </div>#}
+{#      {% if forloop.counter|divisibleby:3 and not forloop.last %}#}
+{#        </div><div class="row">#}
+{#      {% endif %}#}
+{#    {% endfor %}#}
+{#  </div>#}
+{#</div>#}
+
+    <div class="container">
+  <div class="row">
+    {% for i in data %}
+      <div class="col-md-4">
+        <div class="card" style="width: 18rem; height: 30rem; margin: 10px; border-radius: 10px; overflow: hidden;">
+          <img src="{{ i.image }}" class="card-img-top" alt="{{ i.productname }}" style="height: 50%; width: 100%; object-fit: cover;">
+          <div class="card-body" style="height: 50%; overflow-y: auto;">
+            <h5 class="card-title" align="center"><b>Seller:</b> {{ i.USER.Username }}</h5>
+            <h5 class="card-title" align="center"><b>Product Name:</b> {{ i.productname }}</h5>
+            <h5 class="card-title" align="center"><b>Price:</b> {{ i.price }}</h5>
+            <h5 class="card-title" align="center"><b>Available:</b> {{ i.quntity }}</h5>
+            <p class="card-text" align="center" style="max-height: 4em; overflow-y: auto;">{{ i.description }}</p>
+            <form action="/request_product" method="post">
+              {% csrf_token %}
+              <input type="number" name="qty" class="form-control w-50 mx-auto" min="1" value="1" placeholder="quantity">
+              <input type="hidden" name="id" value="{{ i.id }}">
+              <button type="submit" class="btn btn-primary offset-4 mt-2">Add to Cart</button>
+            </form>
+          </div>
+        </div>
+      </div>
+      {% if forloop.counter|divisibleby:3 and not forloop.last %}
+        </div><div class="row">
+      {% endif %}
+    {% endfor %}
+  </div>
+</div>
+
+
+
+{#  </table>#}
+{#</form>#}
+{#</body>#}
+{#</html>#}
+{%endblock%}

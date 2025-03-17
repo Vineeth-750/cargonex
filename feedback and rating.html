@@ -1,0 +1,47 @@
+{% extends 'Logistics_team/index.html' %}
+{% block body %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+<form id="form1" name="form1" method="post" action="">
+{% csrf_token %}
+  <table class="table table-bordered table-striped">
+    <tr>
+      <th width="79" scope="row">#</th>
+      <td width="88">User Name</td>
+      <td width="76">Feedback</td>
+      <td width="70"> Rating</td>
+      <td width="70"> date</td>
+    </tr>
+      {% for i in data %}
+    <tr>
+      <th scope="row">{{forloop.counter  }}
+</th>
+      <td>{{ i.USER.Username }}</td>
+      <td>&nbsp;{{ i.feedback }}</td>
+      <td> <img src="{{ i.rating.0 }}" width="20" height="20">
+                <img src="{{i.rating.1 }}" width="20" height="20">
+                <img src="{{i.rating.2 }}" width="20" height="20">
+                <img src="{{i.rating.3 }}" width="20" height="20">
+                <img src="{{i.rating.4}}" width="20" height="20"></td>
+      <td>{{ i.date }}</td>
+    </tr>
+
+      {% endfor %}
+        <tr><td colspan="5" align="center"> <img src="{{ ar1.0 }}" width="20" height="20">
+                <img src="{{ar1.1 }}" width="20" height="20">
+                <img src="{{ar1.2 }}" width="20" height="20">
+                <img src="{{ar1.3 }}" width="20" height="20">
+                <img src="{{ar1.4}}" width="20" height="20">
+            <br><h4>{{ average_rating }}</h4></td>
+        </tr>
+  </table>
+</form>
+</body>
+</html>
+{%endblock%}

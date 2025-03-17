@@ -1,0 +1,54 @@
+{% extends 'User/index.html' %}
+{% block body %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+{#< xmlns="http://www.w3.org/1999/xhtml">#}
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+    <style type="text/css">
+.table-container {
+  /* Set a fixed height for the container */
+  max-height: 300px; /* Adjust as needed */
+
+  /* Add a vertical scrollbar when content overflows */
+  overflow-x: auto;
+</style>
+<body>
+<form id="form1" name="form1" method="post" action="">
+    <div class="table-container">
+  <table class="table table-bordered table-dark">
+
+
+      <tr>
+      <th scope="row">#</th>
+      <td>Company_name</td>
+      <td>Address</td>
+      <td>Contact</td>
+      <td>Website</td>
+      <td>Email</td>
+      <td>Contact Pearson</td>
+      <td>Locate</td>
+        <td></td>
+    </tr>
+
+
+      {% for i in data %}
+    <tr>
+      <th scope="row">&nbsp;{{ forloop.counter }}</th>
+      <td>{{ i.company_name }}</td>
+      <td>{{ i.post_address }}<br/>{{ i.pincode }}<br/>{{ i.country}}</td>
+      <td>{{ i.contact }}</td>
+      <td>{{ i.website }}</td>
+      <td>{{ i.email }}</td>
+      <td>{{ i.contact_name }}</td>
+        <td><a href="http://maps.google.com/maps?q={{ i.latitude }},{{ i.longitude }}" >locate</a></td>
+        <td><a href="/send_request/{{ i.id }}/{{ id }}" >Send Request</a></td>
+    </tr>
+      {% endfor %}
+  </table>
+    </div>
+</form>
+</body>
+</html>
+{%endblock%}

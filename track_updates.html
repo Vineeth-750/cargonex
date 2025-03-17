@@ -1,0 +1,55 @@
+{% extends 'Logistics_team/index.html' %}
+{% block body %}
+  <table class="table w-50 mx-auto">
+   {% csrf_token %}
+    {% if data|length == 0 %}
+    <tr>
+      <td><span><img src="/static/yello.png" width="32" height="32"></span> Not Updated Yet</td>
+    </tr>
+  {% else %}
+      {% for i in data %}
+  <tr>
+      <th scope="row">
+
+        <td><span><img src="/static/yello.png" width="32" height="32"></span> {{ i.status }} &emsp; {{ i.location }} &emsp; {{ i.date }}: {{ i.time }}</td>
+
+      </th>
+    </tr>
+      {% endfor %}
+  {% endif %}
+  </table>
+  <br />
+    <form id="form1" name="form1" method="post" action="/update_tracking_post/{{id}}">
+       {% csrf_token %}
+
+  <table class="table mx-auto w-50">
+    <tr>
+        <td>
+            <div class="row">
+                <div class="col-6">
+                     <input type="text" placeholder="Current Location" name="place" class="form-control">
+
+                </div>
+                <div class="col-6">
+                    <select class="form-control" name="status" required>
+                        <option value="">Select a status</option>
+                        <option value="dispatched">Dispatched</option>
+                        <option value="reached">Reached</option>
+                        <option value="delivered">Delivered</option>
+                    </select>
+                </div>
+
+            </div>
+           </td>
+
+    </tr>
+    <tr align="center">
+        {% if isDelivered %}
+        <th colspan="3" scope="row"><input type="submit" disabled name="button" id="button" value="Delivered" /></th>
+        {% else %}
+      <th colspan="3" scope="row"><input type="submit" name="button" id="button" value="Update" /></th>
+        {% endif %}
+    </tr>
+  </table>
+</form>
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends 'User/index.html' %}
+{% block body %}
+    <form method="get" action="/pay/{{ id }}">
+<table class="table table-bordered table-dark">
+<tr>
+    <th>Sl</th>
+    <th>Product</th>
+    <th>Quantity</th>
+    <th>Amount</th>
+</tr>
+{% for i in data %}
+    <tr>
+        <td>{{ forloop.counter }}</td>
+        <td>{{ i.product }}</td>
+        <td>{{ i.quantity }}</td>
+        <td>{{ i.amount }}</td>
+    </tr>
+
+{% endfor %}
+<tr>
+    <td colspan="2" align="left">
+        Product Total {{ total }}<p>Delivery Amount  {{ delamount }}</p>
+    </td>
+    <td colspan="2" align="right">
+        Total: {{ gt }}
+        <input type="submit" class="btn btn-primary w-50" value="Pay">
+    </td>
+</tr>
+
+</table>
+    </form>
+{% endblock %}

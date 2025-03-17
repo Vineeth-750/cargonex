@@ -1,0 +1,61 @@
+{% extends 'Logistics_team/index.html' %}
+{% block body %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+<form id="form1" name="form1" method="post" action="">
+  <table class="table table-bordered table-dark">
+    <tr>
+      <th scope="row">#</th>
+      <td>Seller Name</td>
+      <td>Product</td>
+      <td>Place<br/>
+      Pincode</td>
+      <td>Locate</td>
+      <td>Email</td>
+      <td>Contact</td>
+      <td>Buyer Name</td>
+      <td>Place</td>
+      <td>Pincode</td>
+      <td>Locate</td>
+      <td>Email</td>
+      <td>Contact</td>
+      <td>Date</td>
+    </tr>
+      {% for i in data %}
+
+    <tr>
+
+
+    <tr>
+        <th scope="row">{{ forloop.counter }}</th>
+      <td>{{ i.seller_name }}</td>
+      <td><a href="/logoistic_view_products/{{ i.id }}">View Products</a></td>
+      <td>{{i.Place}}<br/>{{i.Pincode }}
+      </td>
+      <td><a href="http://maps.google.com/maps?q={{ i.lati }},{{ i.longi}}" >locate</a></td>
+      <td>&nbsp;{{i.Email}}</td>
+      <td>{{ i.Contact }}</td>
+      <td>{{i.buyer_name}}</td>
+      <td>{{ i.buyer_Place }}</td>
+       <td>{{i.buyer_Pincode}}</td>
+        <td><a href="http://maps.google.com/maps?q={{ i.buyer_lati }},{{ i.buyer_longi }}" >locate</a></td>
+
+       <td>{{i.buyer_email}}</td>
+       <td>{{i.buyer_contact}}</td>
+       <td>{{i.date}}</td>
+        <td><a href="/aprove_logistic_request/{{i.id }}#oo">aprove</a> <br/>
+        <a href="/reject_logistic_request/{{i.id }}#oo">Reject</a> </td>
+</tr>
+  {% endfor %}
+  </table>
+</form>
+
+</body>
+</html>
+{%endblock%}

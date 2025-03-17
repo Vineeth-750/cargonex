@@ -1,0 +1,45 @@
+{% extends 'User/index.html' %}
+{% block body %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+<form id="form1" name="form1" method="post" action="">
+  <table class="table table-bordered table-dark">
+    <tr>
+      <th width="10" scope="row">#</th>
+      <td width="37">User</td>
+      <td width="61">Products</td>
+      <td width="46">Date</td>
+      <td width="61">Amount</td>
+      <td width="73">Payment date</td>
+      <td width="104">Payment status</td>
+
+      <td width="81">&nbsp;</td>
+    </tr>
+      {% for i in data %}
+    <tr>
+      <th scope="row">{{ forloop.counter }}</th>
+      <td>{{i.username }}</td>
+      <td><a href="/view_products/{{ i.id }}">View</a></td>
+      <td>{{i.date}}</td>
+      <td>&nbsp;{{i.amount}}</td>
+      <td>&nbsp;{{i.payment_date}}</td>
+      <td>&nbsp;{{i.payment_status}}</td>
+        {% if i.isAllocated == "false" %}
+        <td><a href="/logistics_team_request/{{ i.id }}"  >Alocate Logistics team</a><br/>
+        <a href="/reject_orde/{{ i.id }}r">Reject</a></td>
+    {% else %}
+            <td>Allocated to {{ i.isAllocated}}</td>
+    {% endif %}
+    </tr>
+      {% endfor %}
+  </table>
+</form>
+</body>
+</html>
+{%endblock%}

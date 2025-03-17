@@ -1,0 +1,14 @@
+{% extends 'Logistics_team/index.html' %}
+{% block body %}
+    <form method="post" action="/aprove_logistic_request_post/{{ id }}">{% csrf_token %}
+    <table class="table table-bordered table-dark w-50 mx-auto">
+    <tr>
+        <td><input type="number" placeholder="Total Delivery Charge" min="100" value="100" class="form-control text-center" name="amount" required></td>
+    </tr>
+        <tr align="center">
+            <td><input type="submit" value="APPROVE"></td>
+        </tr>
+
+    </table>
+    </form>
+{% endblock %}

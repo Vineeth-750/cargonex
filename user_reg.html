@@ -1,0 +1,107 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+<form id="form1" name="form1" onsubmit="conpas()" method="post" action="/register_User_Post">
+    {% csrf_token %}
+  <table width="448" border="1">
+    <tr>
+      <th width="197" scope="row">First Name </th>
+      <td width="235"><label for="textfield"></label>
+      <input type="text" name="textfield" id="textfield" required/></td>
+    </tr>
+    <tr>
+      <th scope="row"><p>Last Name  </p></th>
+      <td><label for="textfield2"></label>
+      <input type="text" name="textfield2" id="textfield2" /></td>
+    </tr>
+    <tr>
+      <th scope="row">Email</th>
+      <td><label for="textfield3"></label>
+      <input type="text" name="textfield3" id="textfield3" required/></td>
+    </tr>
+    <tr>
+      <th scope="row">Contact Number</th>
+      <td><label for="textfield4"></label>
+      <input type="text" name="textfield4" id="textfield4" required/></td>
+    </tr>
+    <tr>
+      <th scope="row">Post Address</th>
+      <td><label for="textfield5"></label>
+      <input type="text" name="textfield5" id="textfield5" required /></td>
+    </tr>
+    <tr>
+      <th scope="row">Pincode</th>
+      <td><label for="textfield6"></label>
+      <input type="text" name="textfield6" id="textfield6" required/></td>
+    </tr>
+    <tr>
+      <th scope="row">Home Town</th>
+      <td><label for="textfield7"></label>
+      <input type="text" name="textfield7" id="textfield7" required/></td>
+    </tr>
+    <tr>
+      <th scope="row">Country</th>
+      <td><label for="textfield8"></label>
+      <input type="text" name="textfield8" id="textfield8" required /></td>
+    </tr>
+    <tr>
+      <th scope="row">State</th>
+      <td><label for="textfield9"></label>
+      <input type="text" name="textfield9" id="textfield9" required/></td>
+    </tr>
+
+    <tr>
+      <th scope="row"><p>Import/Export</p>
+      <p>License        ID</p></th>
+      <td><label for="textfield10"></label>
+      <input type="text" name="textfield10" id="textfield10" required/></td>
+    </tr>
+    <tr>
+      <th scope="row"> Industrial Type</th>
+      <td><select name="jumpMenu" id="jumpMenu" >
+        <option>Machinery and Equipment</option>
+        <option>Raw Materials and Components</option>
+        <option>Transportation Equipment</option>
+        <option>Medical Equipments/Medicines</option>
+        <option>Chemical Products</option>
+        <option>Electrical/Electronics products</option>
+        <option>Construction and Building Materials</option>
+      </select></td>
+    </tr>
+    <tr>
+      <th scope="row">Password</th>
+      <td><label for="textfield11"></label>
+      <input type="text" name="textfield11" id="textfield11"  pattern="{4,}" required/></td>
+    </tr>
+    <tr>
+      <th scope="row"><p>Confirm Password</p>
+      </th>
+      <td><label for="textfield12"></label>
+      <input type="text" name="textfield12" id="textfield12"  pattern="{4,}" required/></td>
+    </tr>
+      <th colspan="2">
+      <input type="submit" value="register" /></th>
+    </tr>
+  </table>
+</form>
+</body>
+</html>
+
+{#<script>#}
+{#function conpas() {#}
+{#    var np = document.getElementById("textfield11").value;#}
+{#    var cp = document.getElementById("textfield12").value;#}
+{#    if (np == cp){#}
+{#        return true;#}
+{#    }#}
+{#    else {#}
+{#        alert("password not match");#}
+{#        return false;#}
+{#    }#}
+{#}#}
+{#</script>#}

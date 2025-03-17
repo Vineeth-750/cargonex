@@ -1,0 +1,43 @@
+{% extends 'User/index.html' %}
+{% block body %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+<form id="form1" name="form1" method="post" action="">
+  <table class="table table-bordered table-dark">
+    <tr>
+      <th width="10" scope="row">#</th>
+      <td width="66">Product Name</td>
+      <td width="47">Buyer</td>
+      <td width="89">Request Date</td>
+      <td width="170">Logistic Team</td>
+      <td width="138">Request Status</td>
+      <td width="138"></td>
+    </tr>
+      {% for i in data %}
+    <tr>
+      <th scope="row">{{ forloop.counter }}</th>
+      <td>{{i.product }}</td>
+      <td>&nbsp;{{i.Buyer }}</td>
+      <td>&nbsp;{{i.Request_Date }}</td>
+      <td>{{i.Logistic_Team }}</td>
+        {% if i.request_status == 'approved' %}
+      <td><a href="/pay/{{ i.oid }}">Pay Now</a> </td>
+        {% else %}
+            <td>{{ i.request_status }}</td>
+                      {% endif %}
+
+        <td><a href="/user_feedback/{{ i.liid }}">Send Feedback</a></td>
+    </tr>
+  {% endfor %}
+
+  </table>
+</form>
+</body>
+</html>
+{%endblock %}

@@ -1,0 +1,60 @@
+{% extends 'admin/index.html' %}
+{% block body %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+
+<body>
+<form id="form1" name="form1" method="post" action="">
+  <table class="table table-bordered table-dark">
+    <tr>
+      <th scope="row">#</th>
+      <td><p>Registration</p> 
+        ID</td>
+      <td>Company NAme</td>
+      <td>Post Address</td>
+      <td>Contact</td>
+      <td>Pincode</td>
+        <td>Website</td>
+      <td>Email</td>
+      <td>Contact Pearson</td>
+      <td>Freight forwarder Licence</td>
+      <td>Transport Permits</td>
+      <td>Permits and Certifications</td>
+      <td>Country</td>
+      <td></td>
+    </tr>
+      {% for i in data %}
+    <tr>
+
+      <th scope="row">&nbsp;{{ forloop.counter }}</th>
+      <td>{{i.reg_id}}</td>
+      <td>{{ i.company_name }}</td>
+      <td>{{ i.post_address }}</td>
+      <td>{{ i.contact }}</td>
+        <td>{{ i.pincode }}</td>
+        <td>{{ i.website }}</td>
+        <td>{{ i.email }}</td>
+        <td>{{ i.contact_name }}</td>
+
+        <td><a href="{{ i.freigt_forwarder_license_image }}" ><img src="{{i.freigt_forwarder_license_image }}" alt="img" height="20px" width="20px"></a></td>
+       <td>&nbsp;{{ i.Transportation_Permits }}</td>
+       <td>{{ i.other_license_and_permits}}</td>
+      <td>{{ i.country}}</td>
+         <td>{{ i.address }}</td>
+        <td><a href="http://www.google.com/maps/?q={{ i.latitude}},{{i.longitude}}">locate</a> </td>
+
+
+      <td><p><a href="/verify_logistics/{{ i.LOGIN.id }}#">Approve</a></p>
+      <p><a href="/reject_logistics/{{ i.LOGIN.id }}">Reject</a></p></td>
+    </tr>
+      {% endfor %}
+  </table>
+</form>
+</body>
+</html>
+{% endblock %}
